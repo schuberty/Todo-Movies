@@ -14,13 +14,13 @@ class ApiService implements ApiServiceBase {
 
   /// Parameter [apiKey] is required to make requests to The Movie Database API.
   /// Can be obtained at https://www.themoviedb.org/settings/api
-  ApiService({required String apiKey}) {
+  ApiService({required String apiKey, Dio? dio}) {
     final BaseOptions options = BaseOptions(
       baseUrl: _apiUrl,
       connectTimeout: 5000,
     );
 
-    _dio = Dio(options);
+    _dio = dio ?? Dio(options);
     _defaultQuery = {
       'api_key': apiKey,
       'language': 'pt-BR',
