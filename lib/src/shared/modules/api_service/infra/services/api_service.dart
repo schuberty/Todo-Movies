@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:todo_movies/src/shared/app_constants.dart';
 
 import '../../domain/services/api_service_base.dart';
 
@@ -27,7 +28,7 @@ class ApiService implements ApiServiceBase {
   }
 
   @override
-  Future<Map<String, dynamic>> get(
+  Future<ResponseMap> get(
     String endpoint, {
     Map<String, dynamic>? query,
   }) async {
@@ -42,6 +43,6 @@ class ApiService implements ApiServiceBase {
       queryParameters: query,
     );
 
-    return response.data;
+    return response.data as ResponseMap;
   }
 }
