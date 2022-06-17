@@ -11,6 +11,11 @@ final appTheme = ThemeData.dark().copyWith(
     displayLarge: const TextStyle(
       color: Colors.white,
       fontWeight: FontWeight.bold,
+      fontSize: 30,
+    ),
+    displayMedium: const TextStyle(
+      color: Colors.white,
+      fontWeight: FontWeight.bold,
       fontSize: 24,
     ),
     labelLarge: TextStyle(

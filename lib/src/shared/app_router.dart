@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_movies/src/modules/home/pages/home_page.dart';
+import 'package:todo_movies/src/modules/movies/domain/repositories/movie_repository_base.dart';
 import 'package:todo_movies/src/modules/movies/pages/movie_page.dart';
 import 'package:todo_movies/src/shared/arguments/movie_argument.dart';
+
+import '../modules/movies/bloc/movies_bloc.dart';
 
 class AppRouter {
   static Route<void>? onGenerateRoutes(RouteSettings routeSettings) {
@@ -10,7 +14,10 @@ class AppRouter {
     switch (routeSettings.name) {
       case '/':
         return MaterialPageRoute(
-          builder: (context) => const HomePage(),
+          builder: (context) => BlocProvider<MoviesBloc>(
+            create: (_) => MoviesBloc(context.read<MovieRepositoryBase>()),
+            child: const HomePage(),
+          ),
         );
       case '/movie':
         if (arguments is MovieArgument) {
@@ -27,8 +34,11 @@ class AppRouter {
 
   static Route _movieRoute(MovieArgument argument) {
     return PageRouteBuilder(
-        pageBuilder: (_, animation, secondaryAnimation) {
-          return const MoviesPage();
+        pageBuilder: (context, animation, _) {
+          return BlocProvider<MoviesBloc>(
+            create: (_) => MoviesBloc(context.read<MovieRepositoryBase>()),
+            child: MoviesPage(movie: argument.movie),
+          );
         },
         transitionsBuilder: (_, animation, __, child) {
           return SlideTransition(
@@ -37,7 +47,7 @@ class AppRouter {
           );
         },
         transitionDuration: const Duration(milliseconds: 400),
-        reverseTransitionDuration: const Duration(milliseconds: 200));
+        reverseTransitionDuration: const Duration(milliseconds: 500));
   }
 
   static Animation<Offset> slideAnimation(
