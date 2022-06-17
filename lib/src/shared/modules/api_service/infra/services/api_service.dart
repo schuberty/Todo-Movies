@@ -8,7 +8,7 @@ class ApiService implements ApiServiceBase {
   late final Dio _dio;
   late final Map<String, dynamic> _defaultQuery;
 
-  static const String assetsUrl = 'https://image.tmdb.org/t/p/original';
+  static const String assetsUrl = 'https://image.tmdb.org/t/p/w780';
 
   static const String _apiUrl = 'https://api.themoviedb.org/3';
 
