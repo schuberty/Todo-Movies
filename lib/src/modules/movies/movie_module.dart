@@ -12,4 +12,5 @@ final movieModules = [
   Provider<MovieRepositoryBase>(
     create: (context) => MovieRepository(context.read<MovieDatasourceBase>()),
   ),
+  // Each MovieBloc is provided in the routing to avoid states being overwrited.
 ];
