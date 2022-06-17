@@ -19,8 +19,12 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
   }
 
   void _onMoviesInitialized(MoviesEvent event, Emitter emit) async {
-    final genres = await _repository.getMovieGenres();
-    _genres.addAll(genres);
+    try {
+      final genres = await _repository.getMovieGenres();
+      _genres.addAll(genres);
+    } catch (exception) {
+      emit(MoviesError());
+    }
   }
 
   void _onFetchMoviesNowPlaying(FetchMoviesNowPlaying event, Emitter emit) async {
