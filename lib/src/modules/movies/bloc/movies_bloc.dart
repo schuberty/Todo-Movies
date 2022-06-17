@@ -15,7 +15,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
         super(MoviesInitial()) {
     on<MoviesEvent>(_onMoviesInitialized);
     on<FetchMoviesNowPlaying>(_onFetchMoviesNowPlaying);
-    on<FetchRecommendedMovies>(_onFetchRecommendedMovies);
+    on<FetchSimilarMovies>(_onFetchRecommendedMovies);
   }
 
   void _onMoviesInitialized(MoviesEvent event, Emitter emit) async {
@@ -36,11 +36,11 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
     }
   }
 
-  void _onFetchRecommendedMovies(FetchRecommendedMovies event, Emitter emit) async {
+  void _onFetchRecommendedMovies(FetchSimilarMovies event, Emitter emit) async {
     emit(MoviesLoading());
 
     final genres = await _repository.getMovieGenres();
-    final movies = await _repository.getMovieRecommendations(event.movieId);
+    final movies = await _repository.getSimilarMovies(event.movieId);
 
     if (!isClosed) {
       emit(MoviesLoaded(movies, genres: genres));

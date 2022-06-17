@@ -21,9 +21,9 @@ class TMDBDatasource implements MovieDatasourceBase {
   }
 
   @override
-  Future<List<ResponseMap>> getMovieRecommendations(int movieId, {int page = 1}) async {
+  Future<List<ResponseMap>> getSimilarMovies(int movieId, {int page = 1}) async {
     final response = await client.get(
-      '/movie/$movieId/recommendations',
+      '/movie/$movieId/similar',
       query: {'page': page},
     );
     final data = response['results'];

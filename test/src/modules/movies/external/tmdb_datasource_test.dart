@@ -43,13 +43,13 @@ void main() {
       expect(data.last['name'], 'Faroeste');
     });
 
-    test('getMovieRecommendations', () async {
+    test('getSimilarMovies', () async {
       const movieId = 639933;
-      const endpoint = '/movie/$movieId/recommendations';
+      const endpoint = '/movie/$movieId/similar';
 
       dioAdapter.onGet(endpoint, (server) => server.reply(200, rawGetMovieRecommendations));
 
-      final data = await datasource.getMovieRecommendations(movieId);
+      final data = await datasource.getSimilarMovies(movieId);
 
       expect(data.length, 3);
       expect(data.first['id'], 453395);

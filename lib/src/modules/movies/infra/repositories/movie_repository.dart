@@ -27,8 +27,8 @@ class MovieRepository implements MovieRepositoryBase {
   }
 
   @override
-  Future<List<MovieEntity>> getMovieRecommendations(int movieId, {int page = 1}) async {
-    final data = await datasource.getMovieRecommendations(movieId, page: page);
+  Future<List<MovieEntity>> getSimilarMovies(int movieId, {int page = 1}) async {
+    final data = await datasource.getSimilarMovies(movieId, page: page);
     return data.map(MovieModel.fromMap).toList();
   }
 

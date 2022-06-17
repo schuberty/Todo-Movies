@@ -16,10 +16,10 @@ class FetchMoviesNowPlaying extends MoviesEvent {
   List<Object> get props => [fetchGenres];
 }
 
-class FetchRecommendedMovies extends MoviesEvent {
+class FetchSimilarMovies extends MoviesEvent {
   final int movieId;
 
-  const FetchRecommendedMovies(this.movieId);
+  const FetchSimilarMovies(this.movieId);
 
   @override
   List<Object> get props => [movieId];

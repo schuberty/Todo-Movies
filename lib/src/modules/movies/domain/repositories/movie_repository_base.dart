@@ -5,7 +5,7 @@ abstract class MovieRepositoryBase {
 
   Future<List<MovieEntity>> getMoviesNowPlaying({int page = 1});
 
-  Future<List<MovieEntity>> getMovieRecommendations(int movieId, {int page = 1});
+  Future<List<MovieEntity>> getSimilarMovies(int movieId, {int page = 1});
 
   Future<Map<int, String>> getMovieGenres();
 }
