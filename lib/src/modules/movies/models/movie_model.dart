@@ -25,7 +25,9 @@ class MovieModel extends MovieEntity {
       : super(
           id: map['id'],
           title: MovieTitle.fromMap(map),
-          releaseDate: DateTime.parse(map['release_date']),
+          releaseDate: (map['release_date'] as String).isNotEmpty
+              ? DateTime.parse(map['release_date'])
+              : null,
           genreIds: (map['genre_ids'] as List).map((element) {
             if (element is int) {
               return element;
@@ -44,6 +46,6 @@ class MovieModel extends MovieEntity {
 
   @override
   String toString() {
-    return 'Movie $id (${title.original}, $voteCount votes, $popularity popularity, ${releaseDate.year} and ${genreIds.length} genres)';
+    return 'Movie $id (${title.original}, $voteCount votes, $popularity popularity, ${releaseDate?.year ?? ''} and ${genreIds.length} genres)';
   }
 }

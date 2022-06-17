@@ -3,7 +3,7 @@ import 'package:todo_movies/src/modules/movies/value_objects/title.dart';
 class MovieEntity {
   late final int id;
   late final MovieTitle title;
-  late final DateTime releaseDate;
+  late final DateTime? releaseDate;
   late final List<int?> genreIds;
   late final String overview;
   late final String originalLanguage;
