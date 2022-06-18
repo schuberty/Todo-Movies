@@ -37,3 +37,8 @@ Média do tempo do desenvolvimento dos módulos, testes e outros componentes do 
 
 Aplicativo foi testado somente na plataforma Android, não sabendo como pode se comportar em um dispositivos iOS.
 
+<div align="center">
+
+https://user-images.githubusercontent.com/38429464/174420524-e013afa1-fee9-47c5-a4a3-c559e097595b.mp4
+
+</div>
