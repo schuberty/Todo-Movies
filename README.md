@@ -2,7 +2,7 @@
 
 <div align="center">
 
-Aplicativo desenvolvido como um teste tendo o objetivo de recriar parte do aplicativo [TodoMovies](https://apps.apple.com/br/app/todomovies-4id792499896) utilizando a [API](https://www.themoviedb) do The Movies Database.
+Aplicativo desenvolvido como um teste tendo o objetivo de recriar parte do aplicativo [TodoMovies](https://apps.apple.com/br/app/todomovies-4id792499896) utilizando a [API](https://www.themoviedb.org) do The Movies Database.
 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/schuberty/Todo-Movies)
 ![GitHub last commit](https://img.shields.io/github/last-commit/schuberty/Todo-Movies?color=yellow)
