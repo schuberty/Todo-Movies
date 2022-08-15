@@ -1,7 +1,7 @@
+import 'package:todo_movies/src/modules/movies/data/models/movie_model.dart';
+import 'package:todo_movies/src/modules/movies/domain/datasources/movie_datasource_base.dart';
 import 'package:todo_movies/src/modules/movies/domain/entities/movie_entity.dart';
 import 'package:todo_movies/src/modules/movies/domain/repositories/movie_repository_base.dart';
-import 'package:todo_movies/src/modules/movies/infra/datasources/movie_datasource_base.dart';
-import 'package:todo_movies/src/modules/movies/models/movie_model.dart';
 
 class MovieRepository implements MovieRepositoryBase {
   final MovieDatasourceBase datasource;

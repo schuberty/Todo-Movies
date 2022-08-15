@@ -1,8 +1,6 @@
-import 'package:todo_movies/src/shared/app_constants.dart';
-import 'package:todo_movies/src/shared/modules/api_service/infra/services/api_service.dart';
-
-import '../domain/entities/movie_entity.dart';
-import '../value_objects/title.dart';
+import 'package:todo_movies/src/modules/movies/data/value_objects/title.dart';
+import 'package:todo_movies/src/modules/movies/domain/entities/movie_entity.dart';
+import 'package:todo_movies/src/shared/modules/http_client/utils.dart';
 
 class MovieModel extends MovieEntity {
   MovieModel({
@@ -21,7 +19,7 @@ class MovieModel extends MovieEntity {
     required super.isAdult,
   });
 
-  MovieModel.fromMap(ResponseMap map)
+  MovieModel.fromMap(JSON map)
       : super(
           id: map['id'],
           title: MovieTitle.fromMap(map),
@@ -35,8 +33,8 @@ class MovieModel extends MovieEntity {
           }).toList(),
           overview: map['overview'],
           originalLanguage: map['original_language'],
-          urlBackdropImage: '${ApiService.assetsUrl}/${map['backdrop_path']}',
-          urlPosterImage: '${ApiService.assetsUrl}/${map['poster_path']}',
+          urlBackdropImage: '${AMDBAPI.assetsUrl}/${map['backdrop_path']}',
+          urlPosterImage: '${AMDBAPI.assetsUrl}/${map['poster_path']}',
           popularity: map['popularity'],
           voteAverage: map['vote_average'] + 0.0,
           voteCount: map['vote_count'],

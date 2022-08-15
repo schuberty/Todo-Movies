@@ -1,4 +1,4 @@
-import 'package:todo_movies/src/shared/app_constants.dart';
+import 'package:todo_movies/src/shared/modules/http_client/utils.dart';
 
 class MovieTitle {
   late final String original;
@@ -9,7 +9,7 @@ class MovieTitle {
     required this.translated,
   });
 
-  MovieTitle.fromMap(ResponseMap map) {
+  MovieTitle.fromMap(JSON map) {
     original = map['original_title'];
     translated = map['title'];
   }

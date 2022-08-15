@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_movies/src/modules/movies/movie_module.dart';
-import 'package:todo_movies/src/shared/app_router.dart';
-import 'package:todo_movies/src/shared/app_theme.dart';
-import 'package:todo_movies/src/shared/modules/shared_modules.dart';
+
+import 'app_modules.dart';
+import 'shared/app/router.dart';
+import 'shared/app/theme.dart';
 
 class TodoMoviesApp extends StatelessWidget {
   const TodoMoviesApp({super.key});
@@ -11,10 +11,7 @@ class TodoMoviesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ...sharedModules,
-        ...movieModules,
-      ],
+      providers: appModules,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: appTheme,

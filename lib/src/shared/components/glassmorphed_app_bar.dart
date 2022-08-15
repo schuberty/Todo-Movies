@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_movies/src/shared/app_constants.dart';
+import 'package:todo_movies/src/shared/app/constants.dart';
 import 'package:todo_movies/src/shared/components/glassmorphed_widget.dart';
 
 class GlassmorphedAppBar extends StatelessWidget implements PreferredSizeWidget {

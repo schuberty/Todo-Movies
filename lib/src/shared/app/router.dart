@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_movies/src/modules/home/pages/home_page.dart';
+import 'package:todo_movies/src/modules/home/presentation/pages/home_page.dart';
 import 'package:todo_movies/src/modules/movies/domain/repositories/movie_repository_base.dart';
-import 'package:todo_movies/src/modules/movies/pages/movie_page.dart';
-import 'package:todo_movies/src/shared/arguments/movie_argument.dart';
+import 'package:todo_movies/src/modules/movies/presentation/bloc/movies_bloc.dart';
+import 'package:todo_movies/src/modules/movies/presentation/pages/movie_page.dart';
 
-import '../modules/movies/bloc/movies_bloc.dart';
+import 'route_arguments/movie_argument.dart';
 
 class AppRouter {
   static Route<void>? onGenerateRoutes(RouteSettings routeSettings) {

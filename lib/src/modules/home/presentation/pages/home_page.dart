@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_movies/src/modules/movies/bloc/movies_bloc.dart';
-import 'package:todo_movies/src/modules/movies/components/movie_list_tile_widget.dart';
-import 'package:todo_movies/src/shared/app_constants.dart';
-import 'package:todo_movies/src/shared/arguments/movie_argument.dart';
+import 'package:todo_movies/src/modules/movies/presentation/bloc/movies_bloc.dart';
+import 'package:todo_movies/src/modules/movies/presentation/components/movie_list_tile_widget.dart';
+import 'package:todo_movies/src/shared/app/constants.dart';
+import 'package:todo_movies/src/shared/app/route_arguments/movie_argument.dart';
 import 'package:todo_movies/src/shared/components/glassmorphed_app_bar.dart';
 
 class HomePage extends StatefulWidget {

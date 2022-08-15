@@ -1,4 +1,4 @@
-import 'package:todo_movies/src/modules/movies/value_objects/title.dart';
+import 'package:todo_movies/src/modules/movies/data/value_objects/title.dart';
 
 class MovieEntity {
   late final int id;

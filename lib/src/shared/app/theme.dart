@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_movies/src/shared/app_constants.dart';
+import 'package:todo_movies/src/shared/app/constants.dart';
 
 final appTheme = ThemeData.dark().copyWith(
   scaffoldBackgroundColor: cBackgroundColor,

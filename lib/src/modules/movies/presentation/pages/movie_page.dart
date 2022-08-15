@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:palette_generator/palette_generator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:todo_movies/src/modules/movies/bloc/movies_bloc.dart';
-import 'package:todo_movies/src/modules/movies/components/movie_banner_tile_widget.dart';
 import 'package:todo_movies/src/modules/movies/domain/entities/movie_entity.dart';
-import 'package:todo_movies/src/shared/app_constants.dart';
+import 'package:todo_movies/src/modules/movies/presentation/bloc/movies_bloc.dart';
+import 'package:todo_movies/src/modules/movies/presentation/components/movie_banner_tile_widget.dart';
+import 'package:todo_movies/src/shared/app/constants.dart';
 import 'package:todo_movies/src/shared/mixins/complete_state_mixin.dart';
 import 'package:todo_movies/src/shared/utils/extensions/color_extension.dart';
 
