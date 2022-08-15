@@ -1,4 +1,4 @@
-package dev.schuberty.todo_movies
+package dev.gabrielschubert.todo_movies
 
 import io.flutter.embedding.android.FlutterActivity
 
