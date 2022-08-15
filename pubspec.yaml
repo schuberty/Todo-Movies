@@ -13,13 +13,14 @@ dependencies:
     sdk: flutter
 
   # State management and dependency injection
-  bloc: ^8.0.3
+  bloc: ^8.1.0
   flutter_bloc: ^8.0.1
   provider: ^6.0.3
   equatable: ^2.0.3
 
   # HTTP Client
   dio: ^4.0.6
+  either_dart: ^0.2.0
 
   # Other packages
   cupertino_icons: ^1.0.2
