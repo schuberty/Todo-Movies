@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'app_modules.dart';
-import 'shared/app/router.dart';
-import 'shared/app/theme.dart';
+import 'package:todo_movies/src/app_modules.dart';
+import 'package:todo_movies/src/shared/app/app_router.dart';
+import 'package:todo_movies/src/shared/app/app_theme.dart';
 
 class TodoMoviesApp extends StatelessWidget {
   const TodoMoviesApp({super.key});
@@ -14,7 +13,7 @@ class TodoMoviesApp extends StatelessWidget {
       providers: appModules,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: appTheme,
+        theme: AppTheme.themeData,
         onGenerateRoute: AppRouter.onGenerateRoutes,
       ),
     );

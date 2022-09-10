@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:todo_movies/src/app_widget.dart';
-import 'package:todo_movies/src/shared/app/constants.dart';
+import 'package:todo_movies/src/shared/app/app_constants.dart';
 import 'package:todo_movies/src/shared/modules/http_client/utils.dart';
 
 void main() {
@@ -28,10 +28,10 @@ void _initialConfigutarion() {
   ]);
 
   SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(statusBarColor: cBackgroundColor),
+    const SystemUiOverlayStyle(statusBarColor: AppConstants.backgroundColor),
   );
 
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    systemNavigationBarColor: cBackgroundColor,
+    systemNavigationBarColor: AppConstants.backgroundColor,
   ));
 }

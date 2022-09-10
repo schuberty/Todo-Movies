@@ -2,11 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class Glassmorphed extends StatelessWidget {
+class GlassmorphedWidget extends StatelessWidget {
   final double offset;
   final Widget? child;
 
-  const Glassmorphed({
+  const GlassmorphedWidget({
     this.offset = 0.0,
     this.child,
     super.key,

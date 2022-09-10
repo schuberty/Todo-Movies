@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_movies/src/shared/app/constants.dart';
+import 'package:todo_movies/src/shared/app/app_constants.dart';
 import 'package:todo_movies/src/shared/components/glassmorphed_widget.dart';
 
 class GlassmorphedAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -15,13 +15,13 @@ class GlassmorphedAppBar extends StatelessWidget implements PreferredSizeWidget 
 
   @override
   Widget build(BuildContext context) {
-    return Glassmorphed(
+    return GlassmorphedWidget(
       offset: offset,
       child: AppBar(
         elevation: 0.0,
         shadowColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
-        backgroundColor: cAppBarColor.withOpacity(0.5),
+        backgroundColor: AppConstants.appBarColor.withOpacity(0.5),
       ),
     );
   }

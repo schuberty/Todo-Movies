@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_movies/src/modules/movies/domain/entities/movie_entity.dart';
-import 'package:todo_movies/src/shared/app/constants.dart';
+import 'package:todo_movies/src/shared/app/app_constants.dart';
 
 class MovieListTile extends StatelessWidget {
   final MovieEntity movie;
@@ -67,7 +67,7 @@ class MovieListTile extends StatelessWidget {
                     children: [
                       const Icon(
                         Icons.favorite,
-                        color: cPrimaryColor,
+                        color: AppConstants.primaryColor,
                       ),
                       const SizedBox(width: 10),
                       Text(

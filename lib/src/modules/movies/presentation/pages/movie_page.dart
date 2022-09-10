@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_movies/src/modules/movies/domain/entities/movie_entity.dart';
 import 'package:todo_movies/src/modules/movies/presentation/bloc/movies_bloc.dart';
 import 'package:todo_movies/src/modules/movies/presentation/components/movie_banner_tile_widget.dart';
-import 'package:todo_movies/src/shared/app/constants.dart';
+import 'package:todo_movies/src/shared/app/app_constants.dart';
 import 'package:todo_movies/src/shared/mixins/complete_state_mixin.dart';
 import 'package:todo_movies/src/shared/utils/extensions/color_extension.dart';
 
@@ -25,17 +25,22 @@ class MoviesPage extends StatefulWidget {
   State<MoviesPage> createState() => _MoviesPageState();
 }
 
-class _MoviesPageState extends State<MoviesPage> with CompleteStateMixin {
+class _MoviesPageState extends State<MoviesPage>
+    with CompleteStateMixin, SingleTickerProviderStateMixin {
+  late final AnimationController colorController;
   late final CachedNetworkImageProvider image;
 
-  Color mainColor = Colors.white;
+  Animation<Color?>? colorAnimation;
   bool isFavorite = false;
 
   @override
   void initState() {
     super.initState();
+
     context.read<MoviesBloc>().add(FetchSimilarMovies(widget.movie.id));
     image = CachedNetworkImageProvider(widget.movie.urlPosterImage);
+
+    colorController = AnimationController(duration: const Duration(milliseconds: 400), vsync: this);
   }
 
   @override
@@ -44,11 +49,16 @@ class _MoviesPageState extends State<MoviesPage> with CompleteStateMixin {
     final preferences = await SharedPreferences.getInstance();
     isFavorite = preferences.getBool(widget.movie.id.toString()) ?? false;
 
-    // TODO: Fix heavy computation that stutter page animation
     final palette = await PaletteGenerator.fromImageProvider(image);
-    setState(() {
-      mainColor = palette.lightVibrantColor?.color ?? palette.vibrantColor?.color ?? Colors.white;
-    });
+    await Future.delayed(const Duration(seconds: 1));
+
+    final mainColor =
+        palette.lightVibrantColor?.color ?? palette.vibrantColor?.color ?? Colors.white;
+
+    colorAnimation = ColorTween(begin: Colors.white, end: mainColor).animate(colorController)
+      ..addListener(() => setState(() {}));
+
+    colorController.forward();
   }
 
   @override
@@ -57,7 +67,7 @@ class _MoviesPageState extends State<MoviesPage> with CompleteStateMixin {
     final flexibleHeight = size.height * 0.5;
 
     return Scaffold(
-      backgroundColor: cBackgroundColor,
+      backgroundColor: AppConstants.backgroundColor,
       body: CustomScrollView(
         slivers: <Widget>[
           SliverLayoutBuilder(
@@ -65,7 +75,7 @@ class _MoviesPageState extends State<MoviesPage> with CompleteStateMixin {
               return SliverAppBar(
                 elevation: 0.0,
                 toolbarHeight: 80.0,
-                backgroundColor: cBackgroundColor,
+                backgroundColor: AppConstants.backgroundColor,
                 expandedHeight: flexibleHeight,
                 leadingWidth: 56,
                 // Pop page icon button
@@ -75,7 +85,7 @@ class _MoviesPageState extends State<MoviesPage> with CompleteStateMixin {
                     onPressed: () => Navigator.pop(context),
                     shape: const CircleBorder(),
                     enableFeedback: false,
-                    color: cBackgroundColor.withOpacity(0.5),
+                    color: AppConstants.backgroundColor.withOpacity(0.5),
                     child: Icon(
                       Platform.isIOS ? Icons.arrow_back_ios_new_sharp : Icons.arrow_back_sharp,
                     ),
@@ -90,8 +100,8 @@ class _MoviesPageState extends State<MoviesPage> with CompleteStateMixin {
                       gradient: LinearGradient(
                         colors: [
                           Colors.transparent,
-                          cBackgroundColor.withOpacity(0.8),
-                          cBackgroundColor.withOpacity(1.0),
+                          AppConstants.backgroundColor.withOpacity(0.8),
+                          AppConstants.backgroundColor.withOpacity(1.0),
                         ],
                         stops: const [0.6, 0.8, 1.0],
                         begin: AlignmentDirectional.topCenter,
@@ -125,8 +135,9 @@ class _MoviesPageState extends State<MoviesPage> with CompleteStateMixin {
                         width: size.width * 0.7,
                         child: Text(
                           widget.movie.title.translated,
-                          style:
-                              Theme.of(context).textTheme.displayLarge?.copyWith(color: mainColor),
+                          style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                                color: colorAnimation?.value ?? Colors.white,
+                              ),
                         ),
                       ),
                       // Favorite button
@@ -152,14 +163,14 @@ class _MoviesPageState extends State<MoviesPage> with CompleteStateMixin {
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               behavior: SnackBarBehavior.floating,
-                              backgroundColor: cPrimaryColor,
+                              backgroundColor: AppConstants.primaryColor,
                             ));
                           }
                         },
                         icon: Icon(
                           isFavorite ? Icons.favorite : Icons.favorite_outline,
                           size: 32,
-                          color: mainColor,
+                          color: colorAnimation?.value ?? Colors.white,
                         ),
                         alignment: Alignment.topCenter,
                         padding: EdgeInsets.zero,
@@ -217,14 +228,14 @@ class _MoviesPageState extends State<MoviesPage> with CompleteStateMixin {
                             movie: movie,
                             genreList: genreList,
                             width: size.width,
-                            color: mainColor,
+                            color: colorAnimation?.value ?? Colors.white,
                           ),
                         );
                       } else {
                         return Divider(
                           height: 18,
                           indent: size.width * 0.2 + 30,
-                          color: cBackgroundColor.lighten(0.1),
+                          color: AppConstants.backgroundColor.lighten(0.1),
                         );
                       }
                     },
@@ -238,7 +249,7 @@ class _MoviesPageState extends State<MoviesPage> with CompleteStateMixin {
                     child: Padding(
                       padding: EdgeInsets.only(top: size.height * 0.05),
                       child: CircularProgressIndicator(
-                        color: mainColor,
+                        color: colorAnimation?.value ?? Colors.white,
                       ),
                     ),
                   ),
